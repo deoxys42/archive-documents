@@ -14,5 +14,13 @@
 	
 	<!-- will interpret types, specified by @Component, @Controller etc. annotations as beans, 
 	that could be loaded in -->
-	<mvc:annotation-driven></mvc:annotation-driven> 
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- will be loaded by the Dispatcher Servlet and change the Request Mapping method return value to
+	a manageable form, that could be given as a response for the request; 
+	f.e: "index" -> "/WEB-INF/jsps/index.jsp" -->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsps/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
 </beans>
