@@ -9,9 +9,11 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.historyarchive.archivedocuments.model.User;
 
@@ -64,5 +66,30 @@ public class UsersDao {
 				return user;
 			}
 		});
+	}
+	
+	@Transactional
+	public boolean create(User user) {
+		return addUser(user) && addAuthority(user);
+	}
+	
+	public boolean addUser(User user) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		
+		params.addValue("passport", user.getPassport());
+		params.addValue("password", user.getPassword());
+		params.addValue("name", user.getName());
+		params.addValue("surname", user.getSurname());
+		
+		return (jdbcTemplate.update("insert into users (passport, password, name, surname) "
+				+ "values (:passport, :password, :name, :surname)", params) == 1);
+	}
+	
+	public boolean addAuthority(User user) {
+		user.setAuthority("ROLE_USER");
+		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
+		
+		return (jdbcTemplate.update("insert into authorities (passport, authority) "
+				+ "values (:passport, :authority)", params) == 1);
 	}
 }
