@@ -29,10 +29,15 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
   </listener>
+  
   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>
   		classpath:com/historyarchive/archivedocuments/config/dao-context.xml
   	</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>spring.profiles.active</param-name>
+  	<param-value>production</param-value>
   </context-param>
 </web-app>
