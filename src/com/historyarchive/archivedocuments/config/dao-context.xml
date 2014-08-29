@@ -16,7 +16,6 @@
 		base-package="com.historyarchive.archivedocuments.model.daos">
 	</context:component-scan>
 	
-	
 	<!-- get the dataSource resource from web.xml (-> context.xml)
 	with help of JNDI and use it as a bean for dao classes -->
 	<jee:jndi-lookup 

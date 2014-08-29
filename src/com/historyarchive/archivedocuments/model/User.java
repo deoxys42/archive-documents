@@ -1,6 +1,6 @@
 package com.historyarchive.archivedocuments.model;
 
-public class User {
+public class User implements Cloneable {
 	private String passport;
 	private String password;
 	private String name;
