@@ -34,6 +34,7 @@
   	<param-name>contextConfigLocation</param-name>
   	<param-value>
   		classpath:com/historyarchive/archivedocuments/config/dao-context.xml
+  		classpath:com/historyarchive/archivedocuments/config/service-context.xml
   	</param-value>
   </context-param>
 </web-app>

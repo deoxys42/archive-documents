@@ -21,6 +21,8 @@ import com.historyarchive.archivedocuments.model.User;
 public class UsersDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
+	public UsersDao() {}
+	
 	public UsersDao(DataSource dataSource) {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
@@ -60,9 +62,9 @@ public class UsersDao {
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User();
 				user.setPassport(rs.getString("passport"));
-				user.setPassport(rs.getString("password"));
-				user.setPassport(rs.getString("name"));
-				user.setPassport(rs.getString("surname"));
+				user.setPassword(rs.getString("password"));
+				user.setName(rs.getString("name"));
+				user.setSurname(rs.getString("surname"));
 				return user;
 			}
 		});
