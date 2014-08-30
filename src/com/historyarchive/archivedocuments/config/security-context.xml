@@ -6,5 +6,23 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="abc" authorities="def" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!-- use expressions in the authentication manager, such as: 
+	denyAll, permitAll, .. -->
+	<security:http use-expressions="true">
+		
+		<security:intercept-url pattern="/" access="permitAll"/>
+		
+		<!-- pattern to deny the all urls except the ones 
+		with their own access values -->
+		<security:intercept-url pattern="/**" access="denyAll" />
+		<security:form-login />
+	</security:http>
 </beans>
