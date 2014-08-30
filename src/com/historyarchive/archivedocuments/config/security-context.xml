@@ -14,16 +14,19 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
-	<!-- use expressions in the authentication manager, such as: 
+	<!-- Use expressions in the authentication manager, such as: 
 	denyAll, permitAll, .. -->
 	<security:http use-expressions="true">
 		
+		<!-- Its better to load the most useful patterns first,
+		because spring is loading them one-by-one -->
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/static/**" access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
 		
-		<!-- pattern to deny the all urls except the ones 
-		with their own access values -->
+		<!-- If the request url is not a one from the above list
+		then the access will be denied -->
 		<security:intercept-url pattern="/**" access="denyAll" />
-		<security:form-login />
+		<security:form-login login-page="/login" />
 	</security:http>
 </beans>

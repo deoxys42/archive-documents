@@ -6,16 +6,18 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>Home page</title>
 	</head>
  
 	<body>
 		<h3>Home HTML page content is not the desirable one!</h3>
 		
+		<a href="${pageContext.request.contextPath}/login.jsp">Go to the login page</a><br/>
+		
 		<c:forEach var="user" items="${users}">
 			Passport: ${user.passport}<br/>
 			Name: ${user.name}<br/>
 			Surname: ${user.surname}<br/>
-		</c:forEach>	
+		</c:forEach>
 	</body>
 </html>
