@@ -18,7 +18,8 @@
 	denyAll, permitAll, .. -->
 	<security:http use-expressions="true">
 		
-		<security:intercept-url pattern="/" access="permitAll"/>
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/static/**" access="permitAll" />
 		
 		<!-- pattern to deny the all urls except the ones 
 		with their own access values -->

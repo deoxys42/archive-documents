@@ -23,4 +23,8 @@
 		<property name="prefix" value="/WEB-INF/jsps/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- will load all static resources to the context path 
+	with a specific mapping for the accessing them -->
+	<mvc:resources location="/WEB-INF/resources/" mapping="/static/**" />
 </beans>
