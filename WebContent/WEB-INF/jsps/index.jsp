@@ -12,7 +12,7 @@
 	<body>
 		<h3>Home HTML page content is not the desirable one!</h3>
 		
-		<a href="${pageContext.request.contextPath}/login.jsp">Go to the login page</a><br/>
+		<a href="${pageContext.request.contextPath}/login">Go to the login page</a><br/>
 		
 		<c:forEach var="user" items="${users}">
 			Passport: ${user.passport}<br/>
