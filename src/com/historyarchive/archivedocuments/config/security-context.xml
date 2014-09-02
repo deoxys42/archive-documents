@@ -8,9 +8,9 @@
 
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="abc" authorities="def" />
-			</security:user-service>
+			<security:jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select passport, password, enabled from users where passport = ?" 
+				authorities-by-username-query="select * from authorities where passport = ?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
