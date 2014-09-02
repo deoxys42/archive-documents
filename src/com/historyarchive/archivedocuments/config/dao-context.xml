@@ -16,20 +16,22 @@
 		base-package="com.historyarchive.archivedocuments.model.daos">
 	</context:component-scan>
 	
-	<!-- get the dataSource resource from web.xml (-> context.xml)
-	with help of JNDI and use it as a bean for dao classes -->
-	<jee:jndi-lookup 
-		jndi-name="jdbc/dataSource" id="dataSource" expected-type="javax.sql.DataSource">
-	</jee:jndi-lookup>
+	<beans profile="production">
+		<!-- get the dataSource resource from web.xml (-> context.xml)
+		with help of JNDI and use it as a bean for dao classes -->
+		<jee:jndi-lookup 
+			jndi-name="jdbc/dataSource" id="dataSource" expected-type="javax.sql.DataSource">
+		</jee:jndi-lookup>
 	
-	<!-- set Spring Transaction Manager for /jdbc/dataSource -->
-	<bean id="transactionManager" 
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- set Spring Transaction Manager for /jdbc/dataSource -->
+		<bean id="transactionManager" 
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
 	
-	<!--  will use the above transactionManager for methods marked
-	with Transactional annotation -->
-	<tx:annotation-driven />
+		<!--  will use the above transactionManager for methods marked
+		with Transactional annotation -->
+		<tx:annotation-driven />
+	</beans>
 </beans>
