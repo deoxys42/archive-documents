@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,10 +20,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.historyarchive.archivedocuments.model.User;
 import com.historyarchive.archivedocuments.model.daos.UsersDao;
 
+@ActiveProfiles("test")
+@ContextConfiguration(locations = {
+		"classpath:com/historyarchive/archivedocuments/config/dao-context.xml",
+		"classpath:com/historyarchive/archivedocuments/config/dao-context.xml",
+		"classpath:com/historyarchive/archivedocuments/test/config/datasource-for-tests.xml"
+})
+@RunWith(SpringJUnit4ClassRunner.class)
 public class UsersDaoTests {
 	private static ApplicationContext xml;
 	
