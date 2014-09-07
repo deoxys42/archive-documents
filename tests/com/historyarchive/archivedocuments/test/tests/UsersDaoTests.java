@@ -1,13 +1,8 @@
 package com.historyarchive.archivedocuments.test.tests;
 
-import static org.junit.Assert.*;
-
-import org.apache.commons.dbcp.BasicDataSource;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +10,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,6 +35,8 @@ import com.historyarchive.archivedocuments.model.daos.UsersDao;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UsersDaoTests {
+	@Rule public ExpectedException thrown = ExpectedException.none();
+	
 	@Autowired
 	private BasicDataSource dataSource;
 	
@@ -167,15 +171,12 @@ public class UsersDaoTests {
 		}
 	}
 	
-	@Ignore("Require Transaction Manager implemented")
-	@Test(expected=DuplicateKeyException.class)
-	public void testCreate_userAlreadyExists_tablesWereNotModified() {
-		try {
-			usersDao.addUser(user);
-			usersDao.create(user);
-		} catch (DuplicateKeyException e) {
-			e.printStackTrace();
-		}
+	@Test()
+	public void testCreate_userAlreadyExists_tablesWereNotModified() throws DuplicateKeyException {
+		thrown.expect(org.springframework.dao.DuplicateKeyException.class);
+		
+		usersDao.addUser(user);
+		usersDao.create(user);
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {
 			
@@ -190,15 +191,12 @@ public class UsersDaoTests {
 		}
 	}
 	
-	@Ignore("Require Transaction Manager implemented")
-	@Test(expected=DuplicateKeyException.class)
+	@Test()
 	public void testCreate_authorityAlreadyExists_tablesWereNotModified() {
-		try {
-			usersDao.addAuthority(user);
-			usersDao.create(user);
-		} catch (DuplicateKeyException e) {
-			e.printStackTrace();
-		}
+		thrown.expect(org.springframework.dao.DuplicateKeyException.class);
+		
+		usersDao.addAuthority(user);
+		usersDao.create(user);
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {
 			
