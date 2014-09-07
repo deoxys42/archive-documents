@@ -3,7 +3,6 @@ package com.historyarchive.archivedocuments.test.tests;
 import static org.junit.Assert.*;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -16,8 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
@@ -30,38 +28,26 @@ import com.historyarchive.archivedocuments.model.daos.UsersDao;
 @ActiveProfiles("test")
 @ContextConfiguration(locations = {
 		"classpath:com/historyarchive/archivedocuments/config/dao-context.xml",
-		"classpath:com/historyarchive/archivedocuments/config/dao-context.xml",
+		"classpath:com/historyarchive/archivedocuments/config/security-context.xml",
 		"classpath:com/historyarchive/archivedocuments/test/config/datasource-for-tests.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UsersDaoTests {
-	private static ApplicationContext xml;
-	
-	private static BasicDataSource dataSource;
+	@Autowired
+	private BasicDataSource dataSource;
 	
 	/* 
-	 * usersDao for testing the basic logic of implemented dao-methods
-	 * Note: not a production dataSource will be used, so update-methods 
-	 * could be invoked without modifying the native tables content
+	 * Not a production dataSource will be used, so update-methods 
+	 * could be invoked without modifying the native tables content.
 	 */
-	private static UsersDao usersDao;
-	
+	@Autowired
+	private UsersDao usersDao;
+
 	private static User user;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		xml = new ClassPathXmlApplicationContext(
-				"com/historyarchive/archivedocuments/test/config/datasource-for-tests.xml");
-		
-		dataSource = (BasicDataSource)xml.getBean("dataSource");
-		usersDao = new UsersDao(dataSource);
-		
 		user = new User("passport10", "password10", "name10", "surname10");
-	}
-	
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		((ClassPathXmlApplicationContext)xml).close();
 	}
 	
 	@Before
