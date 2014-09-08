@@ -18,10 +18,26 @@
 	
 	<!-- will be loaded by the Dispatcher Servlet and change the Request Mapping method return value to
 	a manageable form, that could be given as a response for the request; 
-	f.e: "index" -> "/WEB-INF/jsps/index.jsp" -->
+	f.e: "index" -> "/WEB-INF/jsps/index.jsp"
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsps/"></property>
 		<property name="suffix" value=".jsp"></property>
+	</bean> -->
+	
+	<!-- set Tiles native JspViewResolver for matching jsps with their requests -->
+	<bean id="tilesJspViewResolver" 
+	  		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+	</bean>
+	
+	<!-- default.xml here contains definitions where to find jsp templates -->
+	<bean id="tilesConfigurer" 
+			class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layouts/default.xml</value>
+			</list>
+		</property>
 	</bean>
 	
 	<!-- will load all static resources to the context path 
