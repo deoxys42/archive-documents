@@ -7,17 +7,20 @@
 	<definition name="template" template="/WEB-INF/templates/default.jsp">
 		<put-attribute name="title" value=""></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="css" value=""></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="index" extends="template">
-		<put-attribute name="title" value="Домашня сторінка"></put-attribute>	
+		<put-attribute name="title" value="Домашня сторінка"></put-attribute>
+		<put-attribute name="css" value="index.css"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/index.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="login" extends="template">
 		<put-attribute name="title" value="Вхід в систему"></put-attribute>
+		<put-attribute name="css" value="login.css"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>

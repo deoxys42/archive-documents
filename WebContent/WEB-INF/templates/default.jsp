@@ -6,6 +6,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
+		<link href="${pageContext.request.contextPath}/static/css/
+			<tiles:insertAttribute name="css"></tiles:insertAttribute>"
+			rel="stylesheet" type="text/css" />
 	</head>
 
 	<body>
