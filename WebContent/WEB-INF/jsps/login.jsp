@@ -6,18 +6,19 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Login page</title>
+		<title>Вхід в систему</title>
 	</head>
 
 	<body onload="document.form.j_username.focus();">
-		<h3>Here must be a login page!</h3>
-
-        <form name="form" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
-        	<table>
-        		<tr>
+		<form name="form"
+				action="${pageContext.request.contextPath}/j_spring_security_check"
+				method="post">
+			
+			<table>
+				<tr>
 					<td>Дані паспорта:</td>
 					<td><input name="j_username" type="text" value="" /></td>
-				</tr>  
+				</tr>
 				<tr>
 					<td>Пароль:</td>
 					<td><input name="j_password" type="password" /></td>
@@ -25,11 +26,10 @@
 				<tr>
 					<td><input value="Увійти" type="submit" /></td>
 				</tr>
-			</table> 
+			</table>
 		</form>
-		
 		<c:if test="${param.error != null }">
 			<p>Неправильно введено дані. Спробуйте знову.</p>
 		</c:if>
 	</body>
-</html> 
+</html>
