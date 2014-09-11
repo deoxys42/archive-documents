@@ -112,5 +112,10 @@
   		<artifactId>slf4j-jdk14</artifactId>
   		<version>1.7.7</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-taglibs</artifactId>
+  		<version>3.2.5.RELEASE</version>
+  	</dependency>
   </dependencies>
 </project>

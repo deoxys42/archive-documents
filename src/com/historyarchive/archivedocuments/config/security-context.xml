@@ -22,12 +22,18 @@
 		because spring is loading them one-by-one -->
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/static/**" access="permitAll" />
-		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/login" access="!isAuthenticated()" />
+		<security:intercept-url pattern="/registration" access="!isAuthenticated()" />
+		<security:intercept-url pattern="/loggedout" access="!isAuthenticated()" />
 		
 		<!-- If the request url is not a one from the above list
 		then the access will be denied -->
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login" 
 			authentication-failure-url="/login?error=true" />
+		
+		<!-- If a /j_spring_security_logout was succeed it will
+		redirect to the logout-success-url  -->
+		<security:logout logout-success-url="/loggedout" />
 	</security:http>
 </beans>

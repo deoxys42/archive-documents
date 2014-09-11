@@ -20,4 +20,14 @@
 		<put-attribute name="title" value="Вхід в систему"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
 	</definition>
+	
+	<definition  name="registration" extends="template">
+		<put-attribute name="title" value="Регістрація"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/registration.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loggedout" extends="template">
+		<put-attribute name="title" value="Вихід"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/loggedout.jsp"></put-attribute>	
+	</definition>
 </tiles-definitions>

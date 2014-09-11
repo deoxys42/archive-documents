@@ -1,5 +1,7 @@
 @import "index.css";
 @import "login.css";
+@import "registration.css";
+@import "loggedout.css";
 
 body {
 	background-color: #f7f7f7;
@@ -50,24 +52,48 @@ body {
 	font-size: 24px;
 }
 
- #footer #home, #footer #registration, #footer #login {
+ #footer #home, #footer #login, #footer #registration, #footer #logout {
  	position: absolute;
 	font-family: "Brush Script MT", cursive;
 	font-size: 16px;
  }
 
-#footer #registration, #footer #login {
+#footer #login, #footer #logout {
 	left: 10px;	
+}
+
+#footer #registration {
+	left: 149px;
+}
+
+#footer span {
+	position: absolute;
+	color: #681a1a;
+	font-size: 28px;
+	font-weight: bold;
+	bottom: 0px;
+	left: 139px;
 }
 
 #footer #home {
 	right: 10px;
 }
 
-#content h3 {
+#content h3, #content h4, #content p {
 	color: #4e675c;
 	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+#content h3 {
 	font-size: 22px;
+}
+
+#content h4 {
+	font-size: 20px;
+}
+
+#content p {
+	font-size: 16px;
 }
 
 .errormessage {
