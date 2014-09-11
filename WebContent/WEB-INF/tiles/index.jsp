@@ -28,10 +28,10 @@
 			<a href="<c:url value='/logout' />"></a>
 		</div>
 		<div id="buttons">
-			<a class="link" <c:url value='/usersroom' />">
+			<a class="link" href="<c:url value='/usersroom' />">
 				До персональної сторінки
 			</a>
-			<a href="<c:url value='/j_spring_security_logout' />">
+			<a class="link" href="<c:url value='/j_spring_security_logout' />">
 				Вийти з кабінету
 			</a>		
 		</div>
