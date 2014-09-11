@@ -1,18 +1,18 @@
-#login h3 {
+#login h3, #registration h3 {
 	position: relative;
 	top: 10px;
 	width: 100%;
 	text-align: center;
 }
 
-#login form {
+#login form, #registration form {
 	position: relative;
 	top: 20px;
 	width: 100%;
 	text-align: center;
 }
 
-#login input {
+#login input, #registration input {
 	position: relative;
 	height: 50px;
 	display: block;
@@ -24,13 +24,14 @@
 	margin-top: 20px;
 }
 
-#login input:focus {
+#login input:focus, #registration input:focus {
 	outline: none;
 	border-color: #9ecaed;
     box-shadow: 0 0 40px #68421a;
 }
 
-#login form input[type=text], #login form input[type=password] {
+#login form input[type=text], #login form input[type=password],
+#registration form input[type=text], #registration form input[type=password] {
 	width: 300px;
 	height: 30px;
 	border: 0px;
@@ -38,12 +39,11 @@
 	border-radius: 20px;
 }
 
-#login form #submit {
+#login form #submit, #registration form #submit {
 	background-color: #c1bf97;
 	color: #681a1a;
 	font-size: 18px;
 	font-weight: bold;
-	width: 200px;
 	height: 40px;
 	border: 1px solid #681a1a;
 	border-radius: 5px;
@@ -55,7 +55,11 @@
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
-#login form #submit:hover {
+#login form #submit {
+	width: 200px;
+}
+
+#login form #submit:hover, #registration form #submit:hover {
 	background-color: #a5682a;
 	color: #ffffff;
 }
@@ -66,4 +70,17 @@
 	width: 100%;
 	text-align: center;
 	margin-top: 30px;
+}
+
+#login .link, #login span {
+	font-family: "Brush Script MT", cursive;
+	font-size: 16px;
+}
+
+#login .register-or-login {
+	top: 275px;
+}
+
+#login span {
+	color: #4e675c;
 }

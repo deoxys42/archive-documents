@@ -100,3 +100,9 @@ body {
 	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 	color: red;
 }
+
+.register-or-login {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
