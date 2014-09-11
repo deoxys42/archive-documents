@@ -1,10 +1,25 @@
 package com.historyarchive.archivedocuments.model;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class User implements Cloneable {
+	@Pattern(regexp="[A-Za-zА-ЯЄІа-яєі0-9]*")
+	@Size(min=5, max=20)
 	private String passport;
+	
+	@Pattern(regexp="[^ ]*")
+	@Size(min=8, max=30)
 	private String password;
+	
+	@Pattern(regexp="[A-Za-zА-ЯЄІа-яєі]+[A-Za-zА-ЯЄІа-яєі']*[A-Za-zА-ЯЄІа-яєі]+")
+	@Size(min=2, max=20)
 	private String name;
+	
+	@Pattern(regexp="[A-Za-zА-ЯЄІа-яєі]+[A-Za-zА-ЯЄІа-яєі']*[A-Za-zА-ЯЄІа-яєі]+")
+	@Size(min=2, max=20)
 	private String surname;
+	
 	private String authority;
 
 	private boolean enabled;
