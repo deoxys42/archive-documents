@@ -2,6 +2,7 @@
 @import "login.css";
 @import "registration.css";
 @import "loggedout.css";
+@import "registrated.css";
 
 body {
 	background-color: #f7f7f7;

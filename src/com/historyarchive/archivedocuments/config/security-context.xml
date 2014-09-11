@@ -24,7 +24,13 @@
 		<security:intercept-url pattern="/static/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="!isAuthenticated()" />
 		<security:intercept-url pattern="/registration" access="!isAuthenticated()" />
+		<security:intercept-url pattern="/register" access="!isAuthenticated()" />
 		<security:intercept-url pattern="/loggedout" access="!isAuthenticated()" />
+		<security:intercept-url pattern="/registrated" access="!isAuthenticated()" />
+		
+		<!-- because of the simultaneously sign up and log in only authenticated 
+		users could see registrated page-->
+		<!-- <security:intercept-url pattern="/registrated" access="isAuthenticated()" /> -->
 		
 		<!-- If the request url is not a one from the above list
 		then the access will be denied -->

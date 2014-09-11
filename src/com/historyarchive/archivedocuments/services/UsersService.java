@@ -9,7 +9,7 @@ import com.historyarchive.archivedocuments.model.User;
 import com.historyarchive.archivedocuments.model.daos.UsersDao;
 
 @Service
-public class ArchiveDocumentsService {
+public class UsersService {
 	private UsersDao usersDao;
 
 	public UsersDao getUsersDao() {
@@ -23,5 +23,13 @@ public class ArchiveDocumentsService {
 
 	public List<User> getUsers() {
 		return usersDao.getAll();
+	}
+	
+	public boolean exists(String passport) {
+		return usersDao.existsUserWithPassport(passport);
+	}
+	
+	public boolean create(User user) {
+		return usersDao.create(user);
 	}
 }

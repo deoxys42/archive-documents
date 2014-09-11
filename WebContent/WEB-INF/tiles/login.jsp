@@ -5,9 +5,9 @@
 	<h3>Увійдіть у систему, ввівши свої персональні дані:</h3>
 	
 	<form name="form" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
-		<input id="username" name="j_username" type="text" autocomplete="off" placeholder="Паспорт" autofocus />
-		<input id="password" name="j_password" placeholder="Пароль" type="password" />
-		<input id="submit" type="submit" value="Увійти" />
+		<input name="j_username" type="text" autocomplete="off" placeholder="Паспорт" autofocus />
+		<input name="j_password" placeholder="Пароль" type="password" />
+		<input type="submit" value="Увійти" />
 	</form>
 
 	<c:if test="${param.error != null }">

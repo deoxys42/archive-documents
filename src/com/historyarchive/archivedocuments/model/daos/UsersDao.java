@@ -94,4 +94,9 @@ public class UsersDao {
 		return (jdbcTemplate.update("insert into authorities (passport, authority) "
 				+ "values (:passport, :authority)", params) == 1);
 	}
+	
+	public boolean existsUserWithPassport(String passport) {
+		return jdbcTemplate.queryForObject("select * from users where passport=:passport", 
+				new MapSqlParameterSource("passport", passport), Integer.class) > 0;
+	}
 }

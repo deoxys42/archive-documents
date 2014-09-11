@@ -7,10 +7,10 @@
 	color: #4e675c;
 }
 
-#registration form #submit {
+#registration form input[type=submit] {
 	width: 250px;
 }
 
 #registration .register-or-login {
-	top: 370px;
+	top: 430px;
 }

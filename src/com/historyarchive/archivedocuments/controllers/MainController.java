@@ -6,20 +6,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.historyarchive.archivedocuments.services.ArchiveDocumentsService;
+import com.historyarchive.archivedocuments.services.UsersService;
 
 @Controller
 public class MainController {
-	private ArchiveDocumentsService archiveDocumentsService;
+	private UsersService usersService;
 
 	@Autowired
-	public void setAdService(ArchiveDocumentsService archiveDocumentsService) {
-		this.archiveDocumentsService = archiveDocumentsService;
+	public void setAdService(UsersService usersService) {
+		this.usersService = usersService;
 	}
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("users", archiveDocumentsService.getUsers());
+		model.addAttribute("users", usersService.getUsers());
 		return "index";
 	}
 }
