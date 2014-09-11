@@ -43,4 +43,12 @@
 	<!-- will load all static resources to the context path 
 	with a specific mapping for the accessing them -->
 	<mvc:resources location="/WEB-INF/resources/" mapping="/static/**" />
+	
+	<!-- set up messages property file, so to use it with spring form -->
+	<bean id="messageSource" 
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		
+		<property name="basename" 
+			value="com.historyarchive.archivedocuments.config.messages"></property>
+	</bean>
 </beans>
