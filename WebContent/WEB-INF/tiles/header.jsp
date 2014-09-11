@@ -1,1 +1,3 @@
-<h3>Archive documents!</h3>
+<a class="link" id="home" href="${pageContext.request.contextPath}/">
+	Archive Documents
+</a>

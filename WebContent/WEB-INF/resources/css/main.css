@@ -1,0 +1,76 @@
+@import "index.css";
+@import "login.css";
+
+body {
+	background-color: #f7f7f7;
+}
+
+#header, #content, #footer {
+	left: 10px;
+	right: 10px;
+}
+
+#header, #footer {
+	position: fixed;
+	background-color: #c1bf97;
+}
+
+#header {
+	height: 40px;
+	top: 5px;
+}
+
+#content {
+	position: absolute;
+	background-color: #e7e6d7;
+	top: 50px;
+	bottom: 35px;
+	overflow: auto;
+}
+
+#footer {
+	height: 25px;
+	bottom: 5px;	
+}
+
+.link {
+	color: #681a1a;
+	text-decoration: none;
+}
+
+.link:HOVER {
+	color: #eb7600;
+}
+
+#header #home {
+	position: relative;
+	left: 40%;
+	top: 5px;
+	font-family: Consolas, monaco, monospace;
+	font-size: 24px;
+}
+
+ #footer #home, #footer #registration, #footer #login {
+ 	position: absolute;
+	font-family: "Brush Script MT", cursive;
+	font-size: 16px;
+ }
+
+#footer #registration, #footer #login {
+	left: 10px;	
+}
+
+#footer #home {
+	right: 10px;
+}
+
+#content h3 {
+	color: #4e675c;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size: 22px;
+}
+
+.errormessage {
+	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+	color: red;
+}

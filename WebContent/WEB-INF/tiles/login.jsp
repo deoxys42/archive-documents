@@ -8,26 +8,16 @@
 	});
 </script>
 
-<h3>Here must be a login page!</h3>
-Чек check
+<div id="login">
+	<h3>Увійдіть у систему, ввівши свої персональні дані:</h3>
+	
+	<form name="form" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
+		<input id="username" name="j_username" type="text" autocomplete="off" />
+		<input id="password" name="j_password" type="password" />
+		<input id="submit" type="submit" value="Увійти" />
+	</form>
 
-
-<form name="form" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
-	<table>
-		<tr>
-			<td>Дані паспорта:</td>
-			<td><input name="j_username" type="text" value="" /></td>
-		</tr>  
-		<tr>
-			<td>Пароль:</td>
-			<td><input name="j_password" type="password" /></td>
-		</tr>
-		<tr>
-			<td><input value="Увійти" type="submit" /></td>
-		</tr>
-	</table> 
-</form>
-		
-<c:if test="${param.error != null }">
-	<p>Неправильно введено дані. Спробуйте знову.</p>
-</c:if>
+	<c:if test="${param.error != null }">
+		<p class="errormessage">Неправильно введено дані. Спробуйте знову.</p>
+	</c:if>
+</div>
