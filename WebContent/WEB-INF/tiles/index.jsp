@@ -3,7 +3,6 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-
 <div id="index">
 	<h3>Вітаємо в Archive Documents!</h3>
 	

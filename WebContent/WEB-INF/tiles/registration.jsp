@@ -12,7 +12,7 @@
 		<sf:input name="passport" path="passport" type="text" placeholder="Паспорт" autocomplete="off" />
 		<span class="error"><sf:errors path="passport" /></span>
 		<sf:input name="password" path="password" type="password" placeholder="Пароль" />
-		<span class="error"><sf:errors path="password" /></span>
+		<span class="error"><sf:errors path="password"/></span>
 		<input name="confirm_password" type="password" placeholder="Підтвердіть пароль" />
 		<input type="submit" value="Зарегіструватись" />
 	</sf:form>

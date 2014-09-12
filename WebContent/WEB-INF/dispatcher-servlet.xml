@@ -45,10 +45,11 @@
 	<mvc:resources location="/WEB-INF/resources/" mapping="/static/**" />
 	
 	<!-- set up messages property file, so to use it with spring form -->
-	<bean id="messageSource" 
+	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		
-		<property name="basename" 
+		<property name="basename"
 			value="com.historyarchive.archivedocuments.config.messages"></property>
+		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 </beans>

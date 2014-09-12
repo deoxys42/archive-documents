@@ -40,7 +40,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String createAccount(@Valid User user, BindingResult result) {
-		
 		if (result.hasErrors()) {
 			return "registration";
 		}
