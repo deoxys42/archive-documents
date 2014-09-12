@@ -42,4 +42,8 @@
 		redirect to the logout-success-url  -->
 		<security:logout logout-success-url="/loggedout" />
 	</security:http>
+	
+	<!-- get the annotations be used in a spring validation form -->
+	<security:global-method-security secured-annotations="enabled">
+	</security:global-method-security>
 </beans>
