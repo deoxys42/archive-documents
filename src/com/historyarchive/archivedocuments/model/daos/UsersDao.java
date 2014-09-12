@@ -96,7 +96,7 @@ public class UsersDao {
 	}
 	
 	public boolean existsUserWithPassport(String passport) {
-		return jdbcTemplate.queryForObject("select * from users where passport=:passport", 
+		return jdbcTemplate.queryForObject("select count(*) from users where passport=:passport", 
 				new MapSqlParameterSource("passport", passport), Integer.class) > 0;
 	}
 }
