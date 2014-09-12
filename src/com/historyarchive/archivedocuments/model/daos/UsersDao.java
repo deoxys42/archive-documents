@@ -80,7 +80,9 @@ public class UsersDao {
 		
 		params.addValue("passport", user.getPassport());
 		params.addValue("password", user.getPassword());
+		user.modifyName();
 		params.addValue("name", user.getName());
+		user.modifySurname();
 		params.addValue("surname", user.getSurname());
 		
 		return (jdbcTemplate.update("insert into users (passport, password, name, surname) "

@@ -15,7 +15,7 @@ public class User implements Cloneable {
 	@Pattern(regexp="[A-Za-zА-ЯЄІа-яєі]+[A-Za-zА-ЯЄІа-яєі']*[A-Za-zА-ЯЄІа-яєі]+")
 	@Size(min=2, max=20)
 	private String name;
-	
+
 	@Pattern(regexp="[A-Za-zА-ЯЄІа-яєі]+[A-Za-zА-ЯЄІа-яєі']*[A-Za-zА-ЯЄІа-яєі]+")
 	@Size(min=2, max=20)
 	private String surname;
@@ -35,55 +35,63 @@ public class User implements Cloneable {
 		this.setSurname(surname);
 		this.authority = "ROLE_USER";
 	}
-	
+
 	public void setPassport(String passport) {
 		this.passport = passport.toUpperCase();
+	}
+	
+	public String getPassport() {
+		return passport;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
 
 	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void modifyName() {
 		this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	public void modifySurname() {
 		this.surname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
+	}
+	
+	public String getSurname() {
+		return surname;
 	}
 	
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 	
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getPassport() {
-		return passport;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-	
 	public String getAuthority() {
 		return authority;
 	}
-
+	
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
-	
+
 	public User clone() throws CloneNotSupportedException {
 		return (User) super.clone();
 	}
