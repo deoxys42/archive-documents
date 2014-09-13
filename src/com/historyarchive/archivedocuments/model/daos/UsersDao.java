@@ -9,9 +9,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,9 @@ import com.historyarchive.archivedocuments.model.User;
 @Component
 public class UsersDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	public UsersDao() {}
 	
@@ -37,7 +41,8 @@ public class UsersDao {
 		params.addValue("passport", passport);
 		
 		try {
-			return jdbcTemplate.queryForObject("select * from users where passport=:passport", params, new RowMapper<User>() {
+			return jdbcTemplate.queryForObject("select * from users where passport=:passport", 
+					params, new RowMapper<User>() {
 				
 				@Override
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -72,25 +77,23 @@ public class UsersDao {
 	
 	@Transactional
 	public boolean create(User user) {
-		return addUser(user) && addAuthority(user);
-	}
-	
-	public boolean addUser(User user) {
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		
 		params.addValue("passport", user.getPassport());
-		params.addValue("password", user.getPassword());
+		params.addValue("password", passwordEncoder.encode(user.getPassword()));
 		params.addValue("name", user.getName());
 		params.addValue("surname", user.getSurname());
+		params.addValue("authority", user.getAuthority());
 		
+		return addUser(user, params) && addAuthority(user, params);
+	}
+	
+	public boolean addUser(User user, SqlParameterSource params) {
 		return (jdbcTemplate.update("insert into users (passport, password, name, surname) "
 				+ "values (:passport, :password, :name, :surname)", params) == 1);
 	}
 	
-	public boolean addAuthority(User user) {
-		user.setAuthority("ROLE_USER");
-		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
-		
+	public boolean addAuthority(User user, SqlParameterSource params) {
 		return (jdbcTemplate.update("insert into authorities (passport, authority) "
 				+ "values (:passport, :authority)", params) == 1);
 	}

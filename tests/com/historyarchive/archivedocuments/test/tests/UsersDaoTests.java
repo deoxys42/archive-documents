@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -52,6 +53,7 @@ public class UsersDaoTests {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		user = new User("passport10", "password10", "name10", "surname10");
+		user.setAuthority("ROLE_USER");
 	}
 	
 	@Before
@@ -68,7 +70,6 @@ public class UsersDaoTests {
 		User _user = usersDao.get(user.getPassport());
 		
 		assertEquals("passports do not match;", user.getPassport(), _user.getPassport());
-		assertEquals("passwords do not match;", user.getPassword(), _user.getPassword());
 		assertEquals("names do not match;", user.getName(), _user.getName());
 		assertEquals("surnames do not match", user.getSurname(), _user.getSurname());
 	}
@@ -99,7 +100,7 @@ public class UsersDaoTests {
 	
 	@Test
 	public void testAddUser_methodReturnsTheValue_usersTableWasModifiedAccordingToThatValue() {
-		boolean result = usersDao.addUser(user);
+		boolean result = usersDao.addUser(user, new BeanPropertySqlParameterSource(user));
 		List<User> results = new ArrayList<User>();
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {
@@ -138,9 +139,7 @@ public class UsersDaoTests {
 
 	@Test
 	public void testAddAuthority_methodReturnsTheValue_authoritiesTableWasModifiedAccordingToThatValue() {
-		user.setAuthority("ROLE_USER");
-		
-		boolean result = usersDao.addAuthority(user);
+		boolean result = usersDao.addAuthority(user, new BeanPropertySqlParameterSource(user));
 		List<User> results = new ArrayList<User>();
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {
@@ -164,7 +163,8 @@ public class UsersDaoTests {
 				assertEquals("authorities do not match;", 
 						user.getAuthority(), results.get(0).getAuthority());
 			} else {
-				assertTrue("authority was created while it wasn't supposed to;", results.size() == 0);
+				assertTrue("authority was created while it wasn't supposed to;", 
+						results.size() == 0);
 			}
 		} catch (SQLException e) {
 				e.printStackTrace();
@@ -172,10 +172,12 @@ public class UsersDaoTests {
 	}
 	
 	@Test()
-	public void testCreate_userAlreadyExists_tablesWereNotModified() throws DuplicateKeyException {
+	public void testCreate_userAlreadyExists_tablesWereNotModified() 
+			throws DuplicateKeyException {
+		
 		thrown.expect(org.springframework.dao.DuplicateKeyException.class);
 		
-		usersDao.addUser(user);
+		usersDao.addUser(user, new BeanPropertySqlParameterSource(user));
 		usersDao.create(user);
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {
@@ -195,7 +197,7 @@ public class UsersDaoTests {
 	public void testCreate_authorityAlreadyExists_tablesWereNotModified() {
 		thrown.expect(org.springframework.dao.DuplicateKeyException.class);
 		
-		usersDao.addAuthority(user);
+		usersDao.addAuthority(user, new BeanPropertySqlParameterSource(user));
 		usersDao.create(user);
 		
 		try (Statement stmt = dataSource.getConnection().createStatement()) {

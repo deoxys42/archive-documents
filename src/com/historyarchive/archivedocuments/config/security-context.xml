@@ -44,8 +44,9 @@
 		<security:logout logout-success-url="/loggedout" />
 	</security:http>
 	
-	<!-- uses SHA-256 algorithm by default; user password input will be 
-	encrypted and verified with an expected one before logging in -->
+	<!-- uses SHA-256 encryption algorithm by default; before logging in 
+	user password input will be encrypted and then verified with 
+	an expected password that is stored in a database -->
 	<bean id="passwordEncoder" 
 		class="org.springframework.security.crypto.password.StandardPasswordEncoder">
 	</bean>

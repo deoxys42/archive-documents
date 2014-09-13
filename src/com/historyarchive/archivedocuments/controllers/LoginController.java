@@ -53,6 +53,7 @@ public class LoginController {
 		}
 		
 		try {
+			user.setAuthority("ROLE_USER");
 			usersService.create(user);
 		} catch (DuplicateKeyException e) {
 			result.rejectValue("passport", "DuplicateKey.user.passport");
