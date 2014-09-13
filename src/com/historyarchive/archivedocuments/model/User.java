@@ -53,11 +53,11 @@ public class User implements Cloneable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void modifyName() {
-		this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		if (!name.isEmpty()) {
+			this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		} else {
+			this.name = name;
+		}
 	}
 	
 	public String getName() {
@@ -65,11 +65,12 @@ public class User implements Cloneable {
 	}
 
 	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-	
-	public void modifySurname() {
-		this.surname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
+		if (!surname.isEmpty()) {
+			this.surname = surname.substring(0, 1).toUpperCase() + 
+					surname.substring(1);
+		} else {
+			this.surname = surname;
+		}
 	}
 	
 	public String getSurname() {
