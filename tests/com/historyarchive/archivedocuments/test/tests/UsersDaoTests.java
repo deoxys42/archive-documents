@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.AssertTrue;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -171,7 +173,7 @@ public class UsersDaoTests {
 		}
 	}
 	
-	@Test()
+	@Test
 	public void testCreate_userAlreadyExists_tablesWereNotModified() 
 			throws DuplicateKeyException {
 		
@@ -193,7 +195,7 @@ public class UsersDaoTests {
 		}
 	}
 	
-	@Test()
+	@Test
 	public void testCreate_authorityAlreadyExists_tablesWereNotModified() {
 		thrown.expect(org.springframework.dao.DuplicateKeyException.class);
 		
@@ -211,5 +213,19 @@ public class UsersDaoTests {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testExistsUserWithPassport_userExists_ReturnValueIsTrue() {
+		usersDao.create(user);
+		boolean result = usersDao.existsUserWithPassport(user.getPassport());
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testExistsUserWithPassport_userDoesNotExist_ReturnValueIsFalse() {
+		boolean result = usersDao.existsUserWithPassport(user.getPassport());
+		assertFalse(result);
+		assertFalse(usersDao.existsUserWithPassport("nobody"));
 	}
 }
