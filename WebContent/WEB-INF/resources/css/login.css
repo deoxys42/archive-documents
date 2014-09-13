@@ -64,14 +64,6 @@
 	color: #ffffff;
 }
 
-#login .errormessage {
-	position: relative;
-	color: red;
-	width: 100%;
-	text-align: center;
-	margin-top: 30px;
-}
-
 #login .link, #login span {
 	font-family: "Brush Script MT", cursive;
 	font-size: 16px;
@@ -83,4 +75,13 @@
 
 #login span {
 	color: #4e675c;
+}
+
+#login .errormessage {
+	position: relative;
+	top: 13px;
+	color: red;
+	width: 100%;
+	text-align: center;
+	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 }

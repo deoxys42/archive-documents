@@ -4,21 +4,39 @@
 <div id="registration">
 	<h3>Введіть необхідні дані для регістрації в системі:</h3>
 	
-	<sf:form action="${pageContext.request.contextPath}/register" method="post" commandName="user">
-		<sf:input name="name" path="name" type="text" placeholder="Ім’я" autocomplete="off"  />
-		<span class="error"><sf:errors path="name"/></span>
-		<sf:input name="surname" path="surname" type="text" placeholder="Прізвище" autocomplete="off" />
-		<span class="error"><sf:errors path="surname"/></span>
-		<sf:input name="passport" path="passport" type="text" placeholder="Паспорт" autocomplete="off" />
-		<span class="error"><sf:errors path="passport" /></span>
-		<sf:input name="password" path="password" type="password" placeholder="Пароль" />
-		<span class="error"><sf:errors path="password"/></span>
-		<input name="confirm_password" type="password" placeholder="Підтвердіть пароль" />
-		<input type="submit" value="Зарегіструватись" />
+	<sf:form action="${pageContext.request.contextPath}/register" 
+			method="post" commandName="user">
+		<div>
+			<sf:input name="name" path="name" type="text" 
+					placeholder="Ім’я" autocomplete="off"  />
+			<span class="error"><sf:errors path="name"/></span>
+		</div>
+		<div>
+			<sf:input name="surname" path="surname" type="text" 
+					placeholder="Прізвище" autocomplete="off" />
+			<span class="error"><sf:errors path="surname"/></span>
+		</div>
+		<div>
+			<sf:input name="passport" path="passport" type="text" 
+					placeholder="Паспорт" autocomplete="off" />
+			<span class="error"><sf:errors path="passport" /></span>
+		</div>
+		<div>
+			<sf:input name="password" path="password" type="password" 
+					placeholder="Пароль" />
+			<span class="error"><sf:errors path="password"/></span>
+		</div>
+		<div>
+			<input name="confirm_password" type="password" 
+					placeholder="Підтвердіть пароль" /></div>
+		<div>
+			<input type="submit" value="Зарегіструватись" />
+			<div class="register-or-login" >
+				<a class="link"
+					href="${pageContext.request.contextPath}/login">Увійдіть
+				</a><span>, якщо вже регіструвались.</span>
+			</div>
+		</div>
 	</sf:form>
 	
-	<div class="register-or-login">
-		<a class="link" href="${pageContext.request.contextPath}/login">
-			Увійдіть</a><span>, якщо вже регіструвались.</span>
-	</div>
 </div>

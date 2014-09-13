@@ -97,11 +97,6 @@ body {
 	font-size: 16px;
 }
 
-.errormessage {
-	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
-	color: red;
-}
-
 .register-or-login {
 	position: absolute;
 	width: 100%;
