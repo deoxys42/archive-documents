@@ -6,6 +6,7 @@
 <tiles-definitions>
 	<definition name="template" template="/WEB-INF/templates/default.jsp">
 		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="js" value=""></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="content" value=""></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
@@ -23,6 +24,7 @@
 	
 	<definition name="registration" extends="template">
 		<put-attribute name="title" value="Регістрація"></put-attribute>
+		<put-attribute name="js" value="/WEB-INF/tiles/registrationscript.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/registration.jsp"></put-attribute>
 	</definition>
 	
@@ -32,7 +34,7 @@
 	</definition>
 	
 	<definition name="registrated" extends="template">
-		<put-attribute name="title" value="Успіх"></put-attribute>
+		<put-attribute name="title" value="Успішна регістрація"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/registrated.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>

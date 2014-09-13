@@ -8,6 +8,12 @@
 		<title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 		<link href="${pageContext.request.contextPath}/static/css/main.css"
 			rel="stylesheet" type="text/css" />
+		<script type="text/javascript" 
+			src="${pageContext.request.contextPath}/static/script/jquery.js">
+		</script>
+		
+		<!-- include a jsp with embedded java script -->
+		<tiles:insertAttribute name="js"></tiles:insertAttribute>
 	</head>
 
 	<body>

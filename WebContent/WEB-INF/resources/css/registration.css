@@ -15,9 +15,13 @@
 	margin-top: 30px;
 }
 
-#registration .error span {
+#registration .error span, 
+#registration .passwords_match, #registration .passwords_nomatch {
 	position: relative;
 	top: 6px;
-	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 	color: red;
+}
+
+#registration .passwords_match {
+	color: green;
 }

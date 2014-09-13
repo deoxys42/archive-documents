@@ -23,12 +23,14 @@
 		</div>
 		<div>
 			<sf:input name="password" path="password" type="password" 
-					placeholder="Пароль" />
+					placeholder="Пароль" id="password" />
 			<span class="error"><sf:errors path="password"/></span>
 		</div>
 		<div>
-			<input name="confirm_password" type="password" 
-					placeholder="Підтвердіть пароль" /></div>
+			<input name="password_confirm" type="password" 
+					placeholder="Підтвердіть пароль" id="password_confirm" />
+			<span id="passwords_match_message"></span>
+		</div>
 		<div>
 			<input type="submit" value="Зарегіструватись" />
 			<div class="register-or-login" >
@@ -38,5 +40,4 @@
 			</div>
 		</div>
 	</sf:form>
-	
 </div>
