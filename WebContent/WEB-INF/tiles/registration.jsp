@@ -8,7 +8,7 @@
 			method="post" commandName="user">
 		<div>
 			<sf:input name="name" path="name" type="text" 
-					placeholder="Ім’я" autocomplete="off"  />
+					placeholder="Ім’я" autocomplete="off" />
 			<span class="error"><sf:errors path="name"/></span>
 		</div>
 		<div>

@@ -11,6 +11,7 @@
 			<security:jdbc-user-service data-source-ref="dataSource" 
 				users-by-username-query="select passport, password, enabled from users where passport = ?" 
 				authorities-by-username-query="select * from authorities where passport = ?" />
+			<security:password-encoder ref="passwordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
@@ -42,6 +43,12 @@
 		redirect to the logout-success-url  -->
 		<security:logout logout-success-url="/loggedout" />
 	</security:http>
+	
+	<!-- uses SHA-256 algorithm by default; user password input will be 
+	encrypted and verified with an expected one before logging in -->
+	<bean id="passwordEncoder" 
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder">
+	</bean>
 	
 	<!-- get the annotations be used in a spring validation form -->
 	<security:global-method-security secured-annotations="enabled">
